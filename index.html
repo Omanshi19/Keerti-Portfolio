@@ -194,7 +194,7 @@
     width: 56px; height:56px; border-radius: 8px; flex-shrink:0;
     background: linear-gradient(135deg, var(--accent-soft), var(--bg-raised));
     display:flex; align-items:center; justify-content:center;
-    color: var(--accent-dim); font-size: 10px; 
+    color: var(--accent-dim); font-size: 10px;
     text-align:center; border: 1px dashed var(--line);
   }
   .np-info{ flex:1; min-width:0; }
@@ -213,38 +213,44 @@
   @keyframes bounce{ 0%,100%{ height:4px; } 50%{ height:16px; } }
 
   /* ---------- EXPERIENCE ---------- */
+  .experience-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
   .exp-item{
-    display:flex; flex-direction: column; gap:0; margin-bottom: 24px;
-    padding: 16px; border-radius: var(--radius);
-    border: 1px solid transparent;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, filter .25s ease;
+    display:flex; flex-direction: column; gap:0;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
     cursor: pointer;
     overflow: hidden;
   }
   .exp-item:hover{
-    background: var(--bg-card);
-    border-color: var(--line);
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.5);
-    filter: brightness(1.1);
+    border-color: var(--accent-dim);
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
+    filter: brightness(1.12);
   }
   .exp-image{
-    width: 100%; height: 220px; border-radius: 10px; margin-bottom: 18px;
+    width: 100%; height: 170px;
     background: repeating-linear-gradient(45deg, var(--bg-raised), var(--bg-raised) 10px, #1c1c1c 10px, #1c1c1c 20px);
-    border: 1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--text-faint);
+    border-bottom: 1px solid var(--line);
+    display:block;
+    object-fit: cover;
+    object-position: center 25%;
   }
-  .exp-body{ flex:1; }
+  .exp-body{ flex:1; padding: 18px 20px 20px; }
   .exp-top{ display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap; margin-bottom:6px;}
-  .exp-company{ font-weight:600; font-size:17px; }
+  .exp-company{ font-weight:600; font-size:16px; }
   .exp-company a:hover{ color: var(--accent); }
   .exp-role{ color: var(--text-dim); font-size: 14px; }
   .exp-dates{
     font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--text-faint);
     white-space: nowrap;
   }
-  .exp-points{ margin-top: 10px; padding-left: 18px; color: var(--text-dim); font-size: 14.5px; }
+  .exp-points{ margin-top: 10px; padding-left: 18px; color: var(--text-dim); font-size: 14px; }
   .exp-points li{ margin-bottom: 6px; }
 
   /* ---------- PROJECTS ---------- */
@@ -270,9 +276,11 @@
   }
   .project-cover{
     height: 160px;
+    width: 100%;
     background: repeating-linear-gradient(45deg, var(--bg-raised), var(--bg-raised) 10px, #201d19 10px, #201d19 20px);
     display:flex; align-items:center; justify-content:center;
     color: var(--text-faint); font-family:'JetBrains Mono',monospace; font-size: 12px;
+    object-fit: cover;
   }
   .project-body{ padding: 18px 20px 20px; }
   .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap: 10px; margin-bottom: 8px;}
@@ -358,9 +366,11 @@
   }
   .leader-photo{
     height: 180px;
+    width: 100%;
     background: repeating-linear-gradient(45deg, var(--bg-raised), var(--bg-raised) 10px, #1c1c1c 10px, #1c1c1c 20px);
     display:flex; align-items:center; justify-content:center;
     color: var(--text-faint); font-family:'JetBrains Mono',monospace; font-size: 12px;
+    object-fit: cover;
   }
   .leader-body{ padding: 16px 18px; }
   .leader-title{ font-weight:600; font-size:15.5px; }
@@ -386,6 +396,7 @@
     background: var(--bg-raised); border: 1px dashed var(--line);
     display:flex; align-items:center; justify-content:center;
     font-family:'JetBrains Mono',monospace; font-size: 9px; color: var(--text-faint); text-align:center;
+    object-fit: cover;
   }
   .cta-text{ flex:1; min-width: 200px; }
   .cta-text p{ color: var(--text-dim); font-size: 14px; margin-top:2px; }
@@ -419,6 +430,7 @@
     .gh-grid{ grid-template-columns: repeat(18, 1fr); }
     .projects-grid{ grid-template-columns: 1fr; }
     .leadership-grid{ grid-template-columns: 1fr; }
+    .experience-grid{ grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -467,6 +479,7 @@
   <div class="wrap">
     <div class="eyebrow">professional experience</div>
 
+    <div class="experience-grid">
     <div class="exp-item">
       <img class="exp-image" src="images/Motorola Solutions.jpeg" alt="Motorola Solutions">
       <div class="exp-body">
@@ -486,7 +499,7 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-image placeholder">COMPANY IMAGE — replace with a larger BVK Exports image</div>
+      <img class="exp-image" src="images/BVK Exports.jpeg" alt="BVK Exports">
       <div class="exp-body">
         <div class="exp-top">
           <div>
@@ -503,6 +516,8 @@
       </div>
     </div>
 
+    </div>
+
   </div>
 </section>
 
@@ -513,7 +528,7 @@
 
     <div class="projects-grid">
       <a class="project-card" href="https://github.com/kvijay0611/advanced-diabetes-prediction" target="_blank" rel="noopener">
-        <div class="project-cover placeholder">COVER IMAGE</div>
+        <img class="project-cover" src="images/Diabetes.jpeg" alt="Advanced Diabetes Prediction System">
         <div class="project-body">
           <div class="project-top">
             <div class="project-title">Advanced Diabetes Prediction System</div>
@@ -529,7 +544,7 @@
       </a>
 
       <a class="project-card" href="https://github.com/kvijay0611/radiology-report" target="_blank" rel="noopener">
-        <div class="project-cover placeholder">COVER IMAGE</div>
+        <img class="project-cover" src="images/Radiology Report.jpeg" alt="AI-Based Radiology Report Generation System">
         <div class="project-body">
           <div class="project-top">
             <div class="project-title">AI-Based Radiology Report Generation System</div>
@@ -545,7 +560,7 @@
       </a>
 
       <a class="project-card" href="https://xenodasboardcrm.vercel.app/" target="_blank" rel="noopener">
-        <div class="project-cover placeholder">COVER IMAGE</div>
+        <img class="project-cover" src="images/CRM Dashboard.jpeg" alt="CRM Marketing Analytics Dashboard">
         <div class="project-body">
           <div class="project-top">
             <div class="project-title">CRM Marketing Analytics Dashboard</div>
@@ -561,7 +576,7 @@
       </a>
 
       <a class="project-card" href="https://github.com/kvijay0611/llm-cost-autopilot" target="_blank" rel="noopener">
-        <div class="project-cover placeholder">COVER IMAGE</div>
+        <img class="project-cover" src="images/LLM Cost AutoPilot.jpeg" alt="LLM Cost Autopilot">
         <div class="project-body">
           <div class="project-top">
             <div class="project-title">LLM Cost Autopilot</div>
@@ -609,7 +624,7 @@
 
     <div class="leadership-grid">
       <div class="leader-card">
-        <div class="leader-photo placeholder">PHOTO</div>
+        <img class="leader-photo" src="images/Health-o-Tech.jpeg" alt="Health-o-Tech Club">
         <div class="leader-body">
           <div class="leader-title">PR Lead</div>
           <div class="leader-org">Health-o-Tech Club</div>
@@ -617,7 +632,7 @@
       </div>
 
       <div class="leader-card">
-        <div class="leader-photo placeholder">PHOTO</div>
+        <img class="leader-photo" src="images/Tamil Club.jpeg" alt="Tamil / Regional Club">
         <div class="leader-body">
           <div class="leader-title">Coordinator</div>
           <div class="leader-org">Tamil / Regional Club</div>
@@ -633,7 +648,7 @@
     <div class="eyebrow">let's talk</div>
     <p class="cta-lead">If you've read this far, you might be interested in what I do. Let's connect.</p>
     <div class="cta-box">
-      <div class="cta-avatar placeholder">YOUR<br>PHOTO</div>
+      <img class="cta-avatar" src="images/Keerti.jpeg" alt="Keerti Vijay Ananth">
       <div class="cta-text">
         <div class="exp-company">Keerti Vijay Ananth</div>
         <p class="placeholder">Add your role / tagline here</p>
