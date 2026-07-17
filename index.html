@@ -591,7 +591,7 @@
   <div class="wrap">
     <div class="eyebrow">github contributions</div>
     <div class="gh-user">@<a href="https://github.com/kvijay0611" target="_blank" rel="noopener" style="color:#39d353;">kvijay0611</a></div>
-    <div class="gh-grid" id="ghGrid"></div>
+    <img class="gh-chart" src="https://ghchart.rshah.org/39d353/kvijay0611" alt="kvijay0611's GitHub contribution graph">
   </div>
 </section>
 
@@ -677,18 +677,6 @@
 
 <script>
   // GitHub contribution grid (placeholder pattern — replace with real API data later)
-  const ghGrid = document.getElementById('ghGrid');
-  for (let i = 0; i < 26 * 7; i++) {
-    const cell = document.createElement('div');
-    const r = Math.random();
-    let bg = 'var(--bg-raised)';
-    if (r > 0.85) bg = '#39d353';
-    else if (r > 0.7) bg = '#26a641';
-    else if (r > 0.55) bg = '#006d32';
-    else if (r > 0.4) bg = '#0e4429';
-    cell.style.background = bg;
-    ghGrid.appendChild(cell);
-  }
 
   // Tech stack marquee — edit this list to match your stack.
   // Logos load from Simple Icons CDN in each brand's real color (e.g. React's actual cyan, Node's actual green).
