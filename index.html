@@ -286,6 +286,11 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.55);
     filter: brightness(1.12);
   }
+  .projects-grid:has(.project-card:hover) .project-card:not(:hover){
+    filter: blur(3px) brightness(0.5);
+    opacity: 0.6;
+    transform: scale(0.97);
+  }
   .project-cover{
     height: 160px;
     width: 100%;
