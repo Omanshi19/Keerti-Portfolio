@@ -105,7 +105,23 @@
     position:absolute; left:0; right:0; bottom:0; height:45%;
     background: linear-gradient(180deg, transparent, var(--bg));
   }
-
+  .hero-avatar-wrap{
+    display: flex;
+    justify-content: center;
+    margin-top: -70px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-avatar{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg);
+    background: var(--bg-card);
+    display: block;
+  }
+  
   .hero-content{ padding: 40px 0 8px; text-align: center; }
 
   .hero-tag{
@@ -433,6 +449,9 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-banner"><div class="sun"></div></div>
+  <div class="hero-avatar-wrap">
+    <img class="hero-avatar" src="images/your-photo.jpg" alt="Keerti Vijay Ananth">
+  </div>
   <div class="wrap hero-content">
     <div class="hero-tag">"Always Learning" — 1% Better Everyday</div>
     <h1 class="name">Keerti Vijay Ananth</h1>
