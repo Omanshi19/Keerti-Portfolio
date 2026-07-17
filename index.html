@@ -439,7 +439,19 @@
     .leadership-grid{ grid-template-columns: 1fr; }
     .experience-grid{ grid-template-columns: 1fr; }
   }
-
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  
   @media (prefers-reduced-motion: reduce){
     *{ animation: none !important; transition: none !important; }
   }
@@ -471,7 +483,7 @@
 <!-- ================= NOW PLAYING ================= -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">now playing</div>
+    <div class="eyebrow">now playing reveal</div>
     <a class="now-playing" href="https://open.spotify.com/track/0iIcuwia47B5bzjVpyUwyI?si=WOMX-J5RS8OHL6PDIuRt5Q" target="_blank" rel="noopener">
       <img class="np-art" src="images/drive.jpeg" alt="Drive (From F1 The Movie) album art">
       <div class="np-info">
@@ -490,7 +502,7 @@
     <div class="eyebrow">professional experience</div>
 
     <div class="experience-grid">
-    <div class="exp-item">
+    <div class="exp-item reveal">
       <img class="exp-image" src="images/Motorola Solutions.jpeg" alt="Motorola Solutions">
       <div class="exp-body">
         <div class="exp-top">
@@ -537,7 +549,7 @@
     <div class="eyebrow">proof of work</div>
 
     <div class="projects-grid">
-      <a class="project-card" href="https://github.com/kvijay0611/advanced-diabetes-prediction" target="_blank" rel="noopener">
+      <a class="project-card reveal" href="https://github.com/kvijay0611/advanced-diabetes-prediction" target="_blank" rel="noopener">
         <img class="project-cover" src="images/Diabetes.jpeg" alt="Advanced Diabetes Prediction System">
         <div class="project-body">
           <div class="project-top">
@@ -553,7 +565,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://github.com/kvijay0611/radiology-report" target="_blank" rel="noopener">
+      <a class="project-card reveal" href="https://github.com/kvijay0611/radiology-report" target="_blank" rel="noopener">
         <img class="project-cover" src="images/Radiology Report.jpeg" alt="AI-Based Radiology Report Generation System">
         <div class="project-body">
           <div class="project-top">
@@ -569,7 +581,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://xenodasboardcrm.vercel.app/" target="_blank" rel="noopener">
+      <a class="project-card reveal" href="https://xenodasboardcrm.vercel.app/" target="_blank" rel="noopener">
         <img class="project-cover" src="images/CRM Dashboard.jpeg" alt="CRM Marketing Analytics Dashboard">
         <div class="project-body">
           <div class="project-top">
@@ -585,7 +597,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://github.com/kvijay0611/llm-cost-autopilot" target="_blank" rel="noopener">
+      <a class="project-card reveal" href="https://github.com/kvijay0611/llm-cost-autopilot" target="_blank" rel="noopener">
         <img class="project-cover" src="images/LLM Cost AutoPilot.jpeg" alt="LLM Cost Autopilot">
         <div class="project-body">
           <div class="project-top">
@@ -633,7 +645,7 @@
     <div class="eyebrow">leadership & co-curricular</div>
 
     <div class="leadership-grid">
-      <div class="leader-card">
+      <div class="leader-card reveal">
         <img class="leader-photo" src="images/Health-o-Tech.jpeg" alt="Health-o-Tech Club">
         <div class="leader-body">
           <div class="leader-title">PR Lead</div>
@@ -641,7 +653,7 @@
         </div>
       </div>
 
-      <div class="leader-card">
+      <div class="leader-card reveal">
         <img class="leader-photo" src="images/Tamil Club.jpeg" alt="Tamil / Regional Club">
         <div class="leader-body">
           <div class="leader-title">Coordinator</div>
@@ -700,6 +712,17 @@
 
   // Tech stack marquee — edit this list to match your stack.
   // Logos load from Simple Icons CDN in each brand's real color (e.g. React's actual cyan, Node's actual green).
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => revealObserver.observe(el));
   const stack = [
     { name: "JavaScript", slug: "javascript" },
     { name: "TypeScript", slug: "typescript" },
