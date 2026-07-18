@@ -790,11 +790,11 @@
     { name: "Docker", slug: "docker" },
     { name: "Git", slug: "git" },
     { name: "Figma", slug: "figma" },
-    { name: "AWS", slug: "amazonaws" }
+    { name: "AWS", slug: "amazonaws", customSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" }
   ];
   const track = document.getElementById('marqueeTrack');
   const renderPills = () => stack.map(t =>
-    `<span class="stack-pill"><img src="https://cdn.simpleicons.org/${t.slug}" alt="${t.name}" loading="lazy">${t.name}</span>`
+    `<span class="stack-pill"><img src="${t.customSrc || `https://cdn.simpleicons.org/${t.slug}`}" alt="${t.name}" loading="lazy">${t.name}</span>`
   ).join('');
   track.innerHTML = renderPills() + renderPills(); // duplicated for seamless loop
 </script>
